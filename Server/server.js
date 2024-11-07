@@ -15,6 +15,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+//import routes
+const RecipeRouter = require("./recipe/recipe.route");
+
+//defines routes
+app.use(constants.API.PREFIX.concat("/receipe"), RecipeRouter);
+
 //404 not found route
 app.use((req, res, next) => {
   throw new NotFoundError("API endpoint not found!");
