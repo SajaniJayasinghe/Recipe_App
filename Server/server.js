@@ -19,10 +19,12 @@ app.use(express.json());
 //import routes
 const AuthRouter = require("./auth/auth.route");
 const RecipeRouter = require("./recipe/recipe.route");
+const UserRouter = require("./user/user.route");
 
 //defines routes
 app.use(constants.API.PREFIX.concat("/auth"), AuthRouter);
 app.use(constants.API.PREFIX.concat("/receipe"), RecipeRouter);
+app.use(constants.API.PREFIX.concat("/user"), UserRouter);
 
 //error handler middleware
 app.use(errorHandlerMiddleware);
