@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*Login*/
+/* Container styling */
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f3f4f6;
+}
+
+/* Box styling */
+.login-box {
+  width: 100%;
+  max-width: 24rem;
+  height: 28rem;
+  padding: 1.5rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Title styling */
+.login-title {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 300;
+  color: #ec4899;
+  margin-bottom: 5rem;
+  margin-top: 50px;
+  text-align: left;
+}
+
+/* Input field styling */
+.login-input {
+  border-radius: 0.375rem;
+}
+
+/* Error message styling */
+.login-error-message {
+  color: #f67280;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* Button styling */
+.login-button {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #e75480;
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #db2777;
+}
+
+/* Sign up link styling */
+.login-signup-text {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-top: 1.5rem;
+}
+
+.login-signup-link {
+  color: #ec4899;
+  text-decoration: none;
+}
+
+.login-signup-link:hover {
+  text-decoration: underline;
+}
+
+/*Register*/
+.register-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 0 1.25rem;
+}
+
+.register-box {
+  max-width: 32rem;
+  height: 650px;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  flex: 1;
+}
+
+.register-title {
+  text-align: left;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #e75480;
+}
+
+.register-input {
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  background-color: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  font-size: 0.875rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.register-input:focus {
+  border-color: #d1d5db;
+  background-color: white;
+}
+
+.register-button {
+  margin-top: 1.25rem;
+  font-weight: 600;
+  background-color: #ec4899;
+  color: white;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.register-button:hover {
+  background-color: #4338ca;
+}
+
+.register-signin-text {
+  margin-top: 1.5rem;
+  font-size: 0.75rem;
+  text-align: center;
+  color: #6b7280;
+}
+
+.register-signin-link {
+  color: #1e3a8a;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.register-signin-link:hover {
+  text-decoration: underline;
+}
+
+.flex {
+  display: flex;
+  gap: 1rem;
+}
