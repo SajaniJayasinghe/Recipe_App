@@ -15,11 +15,9 @@ const CreateUser = async (req, res) => {
   const { password } = req.body;
   const user = new User(req.body);
 
-  //validate Password
   if (!password) {
     throw new BadRequestError("Password is required");
   }
-  // Construct auth object
   const auth = new Auth();
   auth._id = user.email;
   auth.password = await userUtil.getEncryptedPassword(password);
@@ -32,7 +30,6 @@ const CreateUser = async (req, res) => {
   try {
     session.startTransaction();
 
-    // Save user and auth
     createdUser = await UserService.save(user, session);
     await AuthService.save(auth, session);
     await session.commitTransaction();

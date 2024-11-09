@@ -8,7 +8,6 @@ const NotFoundError = require("../error/error.classes/NotFoundError");
 
 const LoginUser = async (req, res) => {
   const { email, password } = req.body;
-  //validate email and password
   if (!email || !password) {
     throw new BadRequestError("Email and password are required!");
   }
@@ -19,7 +18,6 @@ const LoginUser = async (req, res) => {
   if (!isAuthCheck) {
     throw new NotFoundError("Invalid Email!");
   }
-  //check if password is correct
   const isPasswordCorrect = await authUtil.comparePassword(
     password,
     isAuthCheck.password
@@ -29,10 +27,7 @@ const LoginUser = async (req, res) => {
     throw new UnauthorizedError("Invalid Password");
   }
 
-  //populate user
   const dbPopulatedUser = await isAuthCheck.populate("user");
-
-  //generate token
   const token = authUtil.signToken(dbPopulatedUser.user);
 
   return res
@@ -43,7 +38,16 @@ const LoginUser = async (req, res) => {
       token: token,
     });
 };
+const LogoutUser = (req, res) => {
+  res.setHeader("authorization", "");
+  res.clearCookie("token");
+
+  return res.status(StatusCodes.OK).json({
+    message: "Logout Successful",
+  });
+};
 
 module.exports = {
   LoginUser,
+  LogoutUser,
 };

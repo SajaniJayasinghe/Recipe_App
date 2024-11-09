@@ -4,6 +4,7 @@ import Register from "./components/User/Register";
 import Hompage from "./components/Recipe/Hompage";
 import FavouritePage from "./components/Recipe/FavouritePage";
 import Layout from "./components/Recipe/Layout";
+import SpecificRecipe from "./components/Recipe/SpecificRecipe";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route element={<Layout />}>
         <Route path="/homepage" element={<Hompage />} />
         <Route path="/favourite" element={<FavouritePage />} />
+        <Route path="/category/:id" element={<SpecificRecipe />} />
       </Route>
     </Routes>
   );

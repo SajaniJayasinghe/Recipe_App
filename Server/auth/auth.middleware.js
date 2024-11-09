@@ -25,8 +25,6 @@ const authorize = () => {
           new UnauthorizedError(`You're unauthorized to access this resource!`)
         );
       }
-
-      // Add auth object to req.body
       req.auth = payload;
       return next();
     } else {

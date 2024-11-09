@@ -1,40 +1,21 @@
 const Recipe = require("./recipe.model");
 
-/**
- * Save a new recipe
- * @param {Object} recipe - The recipe object to save
- * @param {Object} session - The session object for transactions (optional)
- * @returns {Promise<Recipe>} - The saved recipe
- */
+//Save a new recipe
 const save = async (recipe, session) => {
   return await recipe.save({ session });
 };
 
-/**
- * Find all recipes based on query object
- * @param {Object} queryObj - The query object for filtering recipes (optional)
- * @returns {Promise<Recipe[]>} - Array of recipes
- */
+//Find all recipes based on query object
 const findAll = async (queryObj) => {
   return await Recipe.find(queryObj).sort({ createdAt: -1 });
 };
 
-/**
- * Find a recipe by its ID
- * @param {string} id - The ID of the recipe
- * @returns {Promise<Recipe>} - The recipe object
- */
+//Find a recipe by its ID
 const findById = async (id) => {
   return await Recipe.findById(id);
 };
 
-/**
- * Find a recipe by its ID and update it
- * @param {string} id - The ID of the recipe to update
- * @param {Object} update - The update object
- * @param {Object} session - The session object for transactions (optional)
- * @returns {Promise<Recipe>} - The updated recipe
- */
+//Find a recipe by its ID and update it
 const findByIdAndUpdate = async (id, update, session) => {
   if (session) {
     return await Recipe.findByIdAndUpdate(id, update, { new: true }).session(
@@ -45,12 +26,7 @@ const findByIdAndUpdate = async (id, update, session) => {
   }
 };
 
-/**
- * Find a recipe by its ID and delete it
- * @param {string} id - The ID of the recipe to delete
- * @param {Object} session - The session object for transactions (optional)
- * @returns {Promise<Recipe>} - The deleted recipe
- */
+//Find a recipe by its ID and delete it
 const findByIdAndDelete = async (id, session) => {
   if (session) {
     return await Recipe.findByIdAndDelete(id).session(session);
@@ -59,18 +35,50 @@ const findByIdAndDelete = async (id, session) => {
   }
 };
 
-/**
- * Find recipes by category
- * @param {string} category - The category of the recipes to find
- * @returns {Promise<Recipe[]>} - Array of recipes in the given category
- */
+//Find recipes by category
 const findCategoryById = async (categoryId) => {
   const recipe = await Recipe.findOne(
-    { "categories.idCategory": categoryId }, // Query for a recipe with a matching idCategory inside categories
-    { categories: { $elemMatch: { idCategory: categoryId } } } // Project only the matched category
+    { "categories.idCategory": categoryId },
+    { categories: { $elemMatch: { idCategory: categoryId } } }
   );
-  // If recipe is found, return the matched category object
   return recipe ? recipe.categories[0] : null;
+};
+
+//Find recipes by category name
+const findCategoryByName = async (name) => {
+  const recipe = await Recipe.findOne(
+    {
+      "categories.strCategory": name,
+    },
+    { categories: { $elemMatch: { strCategory: name } } }
+  );
+  return recipe ? recipe.categories[0] : null;
+};
+
+// Find all favorite recipes
+const findFavorites = async () => {
+  return await Recipe.find({
+    "categories.status": "favourite",
+  }).sort({ createdAt: -1 });
+};
+
+// Update the status of a category (either 'favourite' or 'unfavourite')
+const updateCategoryStatus = async (categoryId, status) => {
+  const recipe = await Recipe.findOne(
+    { "categories.idCategory": categoryId },
+    { categories: { $elemMatch: { idCategory: categoryId } } }
+  );
+  if (!recipe) {
+    return null;
+  }
+  const categoryIndex = recipe.categories.findIndex(
+    (cat) => cat.idCategory === categoryId
+  );
+  if (categoryIndex !== -1) {
+    recipe.categories[categoryIndex].status = status;
+    await recipe.save();
+  }
+  return recipe.categories[categoryIndex];
 };
 
 module.exports = {
@@ -80,4 +88,7 @@ module.exports = {
   findByIdAndUpdate,
   findByIdAndDelete,
   findCategoryById,
+  findCategoryByName,
+  findFavorites,
+  updateCategoryStatus,
 };
