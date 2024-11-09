@@ -100,7 +100,7 @@ function Login() {
           </Form.Item>
 
           <Form.Item>
-            <Button type="primary" htmlType="submit" className="login-button">
+            <Button type="0000" htmlType="submit" className="login-button">
               SIGN IN
             </Button>
           </Form.Item>
