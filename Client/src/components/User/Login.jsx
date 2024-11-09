@@ -1,21 +1,48 @@
 import React, { useState } from "react";
 import { Form, Input, Button, Typography, Alert } from "antd";
-import { LockOutlined, MailOutlined } from "@ant-design/icons";
+import axios from "axios";
+import { toast, Toaster } from "react-hot-toast";
 import "../../index.css";
 
 const { Title, Text } = Typography;
 
 function Login() {
-  const [error, setError] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const onFinish = (values) => {
+  const resetForm = () => {
+    setEmail("");
+    setPassword("");
+    setError("");
+  };
+
+  const handleLogin = async (values) => {
     const { email, password } = values;
-    if (email !== "john@gmail.com" || password !== "password") {
-      setError(true);
-    } else {
-      setError(false);
-      alert("Logged in successfully!");
+    setError("");
+
+    const loginData = { email, password };
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/api/v1/auth/login",
+        loginData
+      );
+
+      if (response.status === 200) {
+        localStorage.setItem("token", response.data.token);
+        alert("Login Successful");
+        window.location.href = "/homepage";
+      } else {
+        setError("Login failed. Please check your credentials.");
+        toast.error("Login failed. Please check your credentials.");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      setError("Password or Email is incorrect.");
+      toast.error("Password or Email is incorrect.");
     }
+    resetForm();
   };
 
   return (
@@ -37,7 +64,7 @@ function Login() {
         <Form
           name="login_form"
           initialValues={{ remember: true }}
-          onFinish={onFinish}
+          onFinish={handleLogin}
           layout="vertical"
         >
           <Form.Item
@@ -49,6 +76,9 @@ function Login() {
             <Input
               placeholder="Enter your Email address"
               className="login-input"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </Form.Item>
 
@@ -63,11 +93,14 @@ function Login() {
             <Input.Password
               placeholder="Enter your Password"
               className="login-input"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </Form.Item>
 
           <Form.Item>
-            <Button type="0000" className="login-button">
+            <Button type="primary" htmlType="submit" className="login-button">
               SIGN IN
             </Button>
           </Form.Item>
@@ -80,6 +113,8 @@ function Login() {
           </a>
         </div>
       </div>
+
+      <Toaster position="top-right" />
     </div>
   );
 }
