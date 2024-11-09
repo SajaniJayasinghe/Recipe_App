@@ -41,31 +41,33 @@ function Login() {
           layout="vertical"
         >
           <Form.Item
+            style={{ marginTop: "20px" }}
             label="Email address"
             name="email"
             rules={[{ required: true, message: "Please enter your email!" }]}
           >
             <Input
-              prefix={<MailOutlined />}
-              placeholder="john@gmail.com"
+              placeholder="Enter your Email address"
               className="login-input"
             />
           </Form.Item>
 
           <Form.Item
+            style={{ marginTop: "-10px" }}
             label="Password"
             name="password"
-            rules={[{ required: true, message: "Please enter your password!" }]}
+            rules={[
+              { required: true, message: "Please enter correct password!" },
+            ]}
           >
             <Input.Password
-              prefix={<LockOutlined />}
-              placeholder="********"
+              placeholder="Enter your Password"
               className="login-input"
             />
           </Form.Item>
 
           <Form.Item>
-            <Button type="primary" htmlType="submit" className="login-button">
+            <Button type="0000" className="login-button">
               SIGN IN
             </Button>
           </Form.Item>

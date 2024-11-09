@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../../index.css"; // Import the new CSS file
+import "../../index.css";
 
 const Register = () => {
   return (
@@ -9,8 +9,9 @@ const Register = () => {
         <div className="w-full p-6 sm:p-12">
           <div className="flex flex-col items-center">
             <h1 className="register-title">Register</h1>
-            <div className="w-full flex-1 mt-8">
-              <div className="mx-auto max-w-sm flex flex-col gap-4">
+            <div className="w-full flex-1 mt-4">
+              <div className="mx-auto max-w-lg flex flex-col gap-4">
+                {/* First Name and Last Name */}
                 <div className="flex gap-4">
                   <div className="flex-1">
                     <label
@@ -38,30 +39,36 @@ const Register = () => {
                     />
                   </div>
                 </div>
-                <div>
-                  <label htmlFor="email" className="text-gray-700 text-sm">
-                    Email
-                  </label>
-                  <input
-                    className="register-input"
-                    type="email"
-                    placeholder="Enter your email"
-                    id="email"
-                  />
+
+                {/* Email and Phone Number */}
+                <div className="flex gap-4">
+                  <div className="flex-1">
+                    <label htmlFor="email" className="text-gray-700 text-sm">
+                      Email
+                    </label>
+                    <input
+                      className="register-input"
+                      type="email"
+                      placeholder="Enter your email"
+                      id="email"
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <label htmlFor="phone" className="text-gray-700 text-sm">
+                      Phone Number
+                    </label>
+                    <input
+                      className="register-input"
+                      type="tel"
+                      placeholder="Enter your phone number"
+                      id="phone"
+                    />
+                  </div>
                 </div>
-                <div>
-                  <label htmlFor="phone" className="text-gray-700 text-sm">
-                    Phone Number
-                  </label>
-                  <input
-                    className="register-input"
-                    type="tel"
-                    placeholder="Enter your phone number"
-                    id="phone"
-                  />
-                </div>
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                  <div>
+
+                {/* Password and Confirm Password */}
+                <div className="flex gap-4">
+                  <div className="flex-1">
                     <label htmlFor="password" className="text-gray-700 text-sm">
                       Password
                     </label>
@@ -72,7 +79,7 @@ const Register = () => {
                       id="password"
                     />
                   </div>
-                  <div>
+                  <div className="flex-1">
                     <label
                       htmlFor="confirmPassword"
                       className="text-gray-700 text-sm"
@@ -87,6 +94,7 @@ const Register = () => {
                     />
                   </div>
                 </div>
+
                 <button className="register-button">
                   <span>Sign Up</span>
                 </button>
