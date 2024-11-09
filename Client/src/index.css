@@ -255,3 +255,7 @@
   cursor: pointer;
   margin-left: 20px;
 }
+.card-action {
+  text-align: left;
+  margin-left: 20px;
+}
