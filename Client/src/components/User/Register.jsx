@@ -94,10 +94,6 @@ const Register = () => {
             <Title level={3} className="register-title">
               Register
             </Title>
-<<<<<<< HEAD
-
-=======
->>>>>>> 3186fc6 (netlify host)
             <div className="w-full flex-1 mt-4">
               <div className="mx-auto max-w-lg flex flex-col gap-4">
                 {/* First Name and Last Name */}
