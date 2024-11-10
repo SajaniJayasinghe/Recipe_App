@@ -31,7 +31,7 @@ function Login() {
 
       if (response.status === 200) {
         localStorage.setItem("token", response.data.token);
-        alert("Login Successful");
+        alert("Login Successfully!");
         window.location.href = "/homepage";
       } else {
         setError("Login failed. Please check your credentials.");

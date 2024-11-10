@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "../../index.css";
 
+const { Title } = Typography;
+
 const Register = () => {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
@@ -33,12 +35,10 @@ const Register = () => {
     if (password !== confirmPassword)
       newErrors.confirmPassword = "Passwords do not match!";
 
-    // Email validation regex
     if (email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email)) {
       newErrors.email = "Invalid email format!";
     }
 
-    // Phone number validation
     if (phonenumber && !/^\d{10}$/.test(phonenumber)) {
       newErrors.phonenumber = "Phone number must be exactly 10 digits!";
     }
@@ -94,7 +94,10 @@ const Register = () => {
             <Title level={3} className="register-title">
               Register
             </Title>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3186fc6 (netlify host)
             <div className="w-full flex-1 mt-4">
               <div className="mx-auto max-w-lg flex flex-col gap-4">
                 {/* First Name and Last Name */}
