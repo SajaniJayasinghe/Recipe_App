@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { Typography } from "antd";
 import axios from "axios";
 import "../../index.css";
 
