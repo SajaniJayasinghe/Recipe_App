@@ -91,7 +91,10 @@ const Register = () => {
       <div className="register-box">
         <div className="w-full p-6 sm:p-12">
           <div className="flex flex-col items-center">
-            <h1 className="register-title">Register</h1>
+            <Title level={3} className="register-title">
+              Register
+            </Title>
+
             <div className="w-full flex-1 mt-4">
               <div className="mx-auto max-w-lg flex flex-col gap-4">
                 {/* First Name and Last Name */}

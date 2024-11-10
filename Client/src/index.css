@@ -98,12 +98,13 @@
 }
 
 .register-title {
-  text-align: left;
-  margin-left: -270px;
-  font-size: 1.75rem;
+  font-size: 1rem;
   font-weight: 600;
-  color: black;
-  margin-bottom: 0.75rem;
+  color: #ec4899;
+  margin-bottom: 5rem;
+  margin-top: 50px;
+  text-align: left;
+  margin-left: 5px;
 }
 
 .register-box .flex-1 {
